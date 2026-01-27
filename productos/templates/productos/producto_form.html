@@ -1,0 +1,27 @@
+{% extends "productos/base.html" %}
+
+{% block title %}
+Formulario
+{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    {% if modo == "crear" %}
+        <h2>Crear producto</h2>
+    {% else %}
+        <h2>Editar producto: {{ producto.nombre }}</h2>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="actions">
+            <button class="btn primary" type="submit">Guardar</button>
+            <a class="btn" href="{% url 'producto_list' %}">Volver</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
